@@ -19,6 +19,10 @@ class calculator {
     }
     
     chooseOperation(operation) {
+        if (this.currentOperand === '') return
+        if (this.previousOperand !== '') {
+            this.computue()
+        }
         this.operation = operation
         this.previousOperand = this.currentOperand
         this.currentOperand = ''
