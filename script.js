@@ -53,12 +53,26 @@ class calculator {
         this.operation = undefined
         this.previousOperand = ''
     }
+
+    getdisplayNumber(number) {
+        const stringNumber = number.tostring()
+        const intergerDigets = parseFloat(stringNumber.splilt('.')[0])
+        const decimalDegits = stringNumber.splilt('.')[1]
+        let intergerDisplay
+        if (isNaN(intergerDigets)){
+        intergerDisplay = ''
+        } else {
+            intergerDisplay = intergerDigets.toLocaleString('en', {
+                maximumFractionDigets: 0 })
+        }
+    }
     
     updateDisplay(){
-        this.currentOperandandTextElement.innerText = this.currentOperandand
+        this.currentOperandTextElement.innerText = 
+         this.getdisplayNumber(this.currentOperand)
         if(this.operation != null){
-            this.previousOperandandTextElement.innerText = 
-            `${this.previousOperandand} ${this.operation}`
+            this.previousOperandTextElement.innerText = 
+            `${this.getdisplayNumber(this.previousOperand)} ${this.operation}`
         }
     }
     }
