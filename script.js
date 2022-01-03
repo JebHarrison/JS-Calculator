@@ -19,7 +19,9 @@ class calculator {
     }
     
     chooseOperation(operation) {
-
+        this.operation = operation
+        this.previousOperand = this.currentOperand
+        this.currentOperand = ''
     }
     
     compute() {
@@ -28,8 +30,9 @@ class calculator {
     
     updateDisplay(){
         this.currentOperandandTextElement.innerText = this.currentOperandand
+        this.previousOperandandTextElement.innerText = this.previousOperandand
     }
-}
+    }
 
 
 
