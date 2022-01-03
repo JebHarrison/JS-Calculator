@@ -56,7 +56,10 @@ class calculator {
     
     updateDisplay(){
         this.currentOperandandTextElement.innerText = this.currentOperandand
-        this.previousOperandandTextElement.innerText = this.previousOperandand
+        if(this.operation != null){
+            this.previousOperandandTextElement.innerText = 
+            `${this.previousOperandand} ${this.operation}`
+        }
     }
     }
 
