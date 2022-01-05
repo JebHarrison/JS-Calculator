@@ -16,9 +16,9 @@ class Calculator {
     
     appendNumber(number){
         if (number === '.' && this.currentOperand.includes('.')) return 
-        // else {
+        
         return this.currentOperand = this.currentOperand.toString() + number.toString()
-        // }   
+          
     }
     
     chooseOperation(operation) {
@@ -55,10 +55,9 @@ class Calculator {
         this.currentOperand = computation
         this.operation = undefined
         this.previousOperand = ''
-        console.log(computation)
     }
 
-    getdisplayNumber(number) {
+    getDisplayNumber(number) {
         const stringNumber = number.toString()
         const intergerDigets = parseFloat(stringNumber.split('.')[0])
         const decimalDegits = stringNumber.split('.')[1]
@@ -81,7 +80,7 @@ class Calculator {
          (this.currentOperand)
         if(this.operation != null){
             this.previousOperandTextElement.innerText = 
-            `${this.getdisplayNumber(this.previousOperand)} ${this.operation}`
+            `${this.getDisplayNumber(this.previousOperand)} ${this.operation}`
         }else {
             this.previousOperandTextElement.innerText = ''
         }
@@ -97,27 +96,8 @@ const deleteButton = document.querySelector('[data-delete]')
 const allClearButton = document.querySelector('[data-all-clear]')
 const previousOperandTextElement = document.querySelector('[data-previous-operand]')
 const currentOperandTextElement = document.querySelector('[data-current-operand]')
-// const decimal = document.querySelector('[data-decimal]')
 
 const calculator = new Calculator(previousOperandTextElement, currentOperandTextElement) 
-
-// console.log(calculator)
-
-// calculator = (previousOperandTextElement, 
-//     currentOperandTextElement)
-
-// numberButtons.forEach(button => {
-//     button.addEventListener('click',( ) => {
-//         let initialValue = button.innerText
-//         calculator.appendNumber(initialValue)
-//         calculator.updateDisplay()
-//         // console.log(initialValue)
-//     })
-// }) 
-
-
-
-
 
 numberButtons.forEach(button => {
     button.addEventListener('click', () => {
