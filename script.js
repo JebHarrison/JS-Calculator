@@ -1,4 +1,4 @@
-class calculator {
+class Calculator {
     constructor(previousOperandTextElement, currentOperandTextElement) {
         this.previousOperandTextElement = previousOperandTextElement
         this.currentOperandTextElement = currentOperandTextElement
@@ -15,8 +15,10 @@ class calculator {
     }
     
     appendNumber(number){
-        if (number === '.' && this.currentOperand.includes('.')) return
-        this.currentOperand = this.currentOperand.toString() + number.toString()
+        if (number === '.' && this.currentOperand.includes('.')) return 
+        // else {
+        return this.currentOperand = this.currentOperand.toString() + number.toString()
+        // }   
     }
     
     chooseOperation(operation) {
@@ -53,12 +55,13 @@ class calculator {
         this.currentOperand = computation
         this.operation = undefined
         this.previousOperand = ''
+        console.log(computation)
     }
 
     getdisplayNumber(number) {
-        const stringNumber = number.tostring()
-        const intergerDigets = parseFloat(stringNumber.splilt('.')[0])
-        const decimalDegits = stringNumber.splilt('.')[1]
+        const stringNumber = number.toString()
+        const intergerDigets = parseFloat(stringNumber.split('.')[0])
+        const decimalDegits = stringNumber.split('.')[1]
         let intergerDisplay
         if (isNaN(intergerDigets)){
         intergerDisplay = ''
@@ -94,9 +97,27 @@ const deleteButton = document.querySelector('[data-delete]')
 const allClearButton = document.querySelector('[data-all-clear]')
 const previousOperandTextElement = document.querySelector('[data-previous-operand]')
 const currentOperandTextElement = document.querySelector('[data-current-operand]')
+// const decimal = document.querySelector('[data-decimal]')
 
-const calculator = new Calculator(previousOperandTextElement, 
-    currentOperandTextElement)
+const calculator = new Calculator(previousOperandTextElement, currentOperandTextElement) 
+
+// console.log(calculator)
+
+// calculator = (previousOperandTextElement, 
+//     currentOperandTextElement)
+
+// numberButtons.forEach(button => {
+//     button.addEventListener('click',( ) => {
+//         let initialValue = button.innerText
+//         calculator.appendNumber(initialValue)
+//         calculator.updateDisplay()
+//         // console.log(initialValue)
+//     })
+// }) 
+
+
+
+
 
 numberButtons.forEach(button => {
     button.addEventListener('click', () => {
@@ -107,13 +128,16 @@ numberButtons.forEach(button => {
 
 operationButtons.forEach(button => {
     button.addEventListener('click', () => {
-        calculator.appendNumber(button.innerText)
+        
+        calculator.chooseOperation(button.innerText)
+        // calculator.appendNumber(button.innerText)
         calculator.updateDisplay()
     })
 })
 
 
 equalsButton.addEventListener('click', button => {
+    console.log(equalsButton)
     calculator.compute()
     calculator.updateDisplay()
 })
